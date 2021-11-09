@@ -9,3 +9,6 @@ func _ready():
 func _physics_process(delta):
 	velocity.y = -speed #La balle se déplace vers le haut
 	velocity = move_and_slide(velocity)
+
+func _on_Timer_timeout():
+	queue_free()
