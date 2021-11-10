@@ -5,6 +5,9 @@ var strengh = 50
 const target_y = 5
 const GRAVITY = 5
 
+func _ready():
+	$Strengh.text = String(strengh) #Actualise le compteur de pièces
+
 func _physics_process(delta):
 	velocity.y += GRAVITY
 	move_and_slide(velocity, Vector2.UP)
@@ -18,4 +21,4 @@ func _physics_process(delta):
 
 func _on_Area2D_area_entered(area):
 	strengh -= 1
-	print(strengh)
+	_ready()
