@@ -1,12 +1,13 @@
-extends Area2D
+extends KinematicBody2D
 
-const DEFAULT_SPEED = 100
+var velocity = Vector2(100,0)
+const target_y = 5
+const GRAVITY = 5
 
-var _speed = DEFAULT_SPEED
-var direction = Vector2.LEFT
-
-onready var _initial_pos = position
-
-func _process(delta):
-	_speed += delta * 2
-	position += _speed * delta * direction
+func _physics_process(delta):
+	velocity.y += GRAVITY
+	move_and_slide(velocity, Vector2.UP)
+	if is_on_wall():
+		velocity.x *= -1
+	if is_on_floor():
+		velocity.y *= -1

@@ -13,9 +13,6 @@ script = ExtResource( 5 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160, 672 )
 
-[node name="Ball" parent="." instance=ExtResource( 2 )]
-position = Vector2( 672, 352 )
-
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_mask = 4
 
@@ -81,5 +78,8 @@ shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
+
+[node name="Ball" parent="." instance=ExtResource( 2 )]
+position = Vector2( 640, 320 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
