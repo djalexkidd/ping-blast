@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var velocity = Vector2(100,0)
+var strengh = 50
 const target_y = 5
 const GRAVITY = 5
 
@@ -11,3 +12,10 @@ func _physics_process(delta):
 		velocity.x *= -1
 	if is_on_floor():
 		velocity.y *= -1
+	
+	if strengh == 0:
+		queue_free()
+
+func _on_Area2D_area_entered(area):
+	strengh -= 1
+	print(strengh)
