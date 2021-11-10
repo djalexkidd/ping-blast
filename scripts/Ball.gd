@@ -5,6 +5,8 @@ var strengh = 50
 const target_y = 5
 const GRAVITY = 5
 
+signal add_score
+
 func _ready():
 	$Strengh.text = String(strengh) #Actualise le compteur de pièces
 
@@ -20,5 +22,7 @@ func _physics_process(delta):
 		queue_free()
 
 func _on_Area2D_area_entered(area):
-	strengh -= 1
-	_ready()
+	if not area.is_in_group("Player"):
+		strengh -= 1
+		emit_signal("add_score")
+		_ready()
