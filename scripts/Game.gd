@@ -12,3 +12,8 @@ func _physics_process(delta):
 
 func _on_Timer_timeout():
 	can_shoot = true
+
+func _on_Player_lose():
+	$BGM.stop()
+	$GameOverSound.play()
+	$HUD/GameOverLabel.show()
