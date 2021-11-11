@@ -39,7 +39,7 @@ __meta__ = {
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160, 672 )
 
-[node name="Ball" parent="." instance=ExtResource( 2 )]
+[node name="ball0" parent="." instance=ExtResource( 2 )]
 position = Vector2( 640, 320 )
 
 [node name="Floor" type="StaticBody2D" parent="."]
@@ -158,13 +158,19 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 
+[node name="SpawnNewTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -6.0
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -6.0
 autoplay = true
 
 [connection signal="lose" from="Player" to="." method="_on_Player_lose"]
-[connection signal="add_score" from="Ball" to="HUD" method="_on_Ball_add_score"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="SpawnNewTimer" to="." method="_on_SpawnNewTimer_timeout"]
