@@ -8,7 +8,14 @@ const GRAVITY = 5
 signal add_score
 signal spawn_small
 
+const colors = [Color(1.0, 0.0, 0.0),
+		  Color(0.0, 1.0, 0.0),
+		  Color(0.0, 0.0, 1.0),
+		  Color(1.0, 1.0, 1.0)]
+
 func _ready():
+	randomize()
+	modulate = colors[randi() % colors.size()]
 	$Strengh.text = String(strengh) #Actualise le compteur
 	connect("add_score", get_node("../HUD"), "_on_Ball_add_score")
 	if is_in_group("ball"):
