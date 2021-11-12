@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/vcr.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/MainMenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/icons/fullscreen.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 128
@@ -81,5 +82,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="FullScreenButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -100.0
+margin_top = -100.0
+texture_normal = ExtResource( 3 )
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="pressed" from="FullScreenButton" to="." method="_on_FullScreenButton_pressed"]
