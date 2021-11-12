@@ -29,6 +29,10 @@ func _on_Player_lose():
 	$BGM.stop()
 	$GameOverSound.play()
 	$HUD/GameOverLabel.show()
+	if $HUD.score > Global.highscore:
+		$NewHighScoreSound.play()
+		$HUD/NewHighScoreLabel.show()
+		save_highscore()
 
 func _on_Ball_spawn_small():
 	toast()
@@ -53,3 +57,14 @@ func _on_SpawnNewTimer_timeout():
 
 func _on_GameOverSound_finished():
 	get_tree().change_scene("res://scenes/MainMenu.tscn")
+
+# Sauvegarde le meilleur score
+func save_highscore():
+	var data = {
+		"highscore" : $HUD.get_score()
+	}
+	
+	var save_file = File.new()
+	save_file.open("user://highscores.json", File.WRITE)
+	save_file.store_line(to_json(data))
+	save_file.close()
