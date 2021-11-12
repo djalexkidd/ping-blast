@@ -5,6 +5,13 @@ var bullet_ressource = preload("res://scenes/Bullet.tscn")
 var ball_ressource = preload("res://scenes/Ball.tscn")
 var ball_small_ressource = preload("res://scenes/Ball_small.tscn")
 var ball_number = 0
+const TRACKS = [ 'Track1', 'Track2' ]
+
+func _ready():
+	var rand_nb = randi() % TRACKS.size()
+	var audiostream = load('res://assets/sounds/bgm/' + TRACKS[rand_nb] + '.wav')
+	get_node("BGM").set_stream(audiostream)
+	$BGM.play()
 
 func _physics_process(delta):
 	if Input.is_action_pressed("click") and can_shoot: #Quand le clic gauche est appuyé
@@ -17,6 +24,8 @@ func _on_Timer_timeout():
 	can_shoot = true
 
 func _on_Player_lose():
+	$Timer.queue_free()
+	can_shoot = false
 	$BGM.stop()
 	$GameOverSound.play()
 	$HUD/GameOverLabel.show()
@@ -41,3 +50,6 @@ func _on_SpawnNewTimer_timeout():
 	ball.set_name("ball" + str(ball_number))
 	add_child(ball) #L'ajoute dans la scène
 	get_node("ball" + str(ball_number)).position = Vector2(640, 320)
+
+func _on_GameOverSound_finished():
+	get_tree().change_scene("res://scenes/MainMenu.tscn")
