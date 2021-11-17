@@ -46,10 +46,12 @@ position = Vector2( 160, 672 )
 [node name="ball0" parent="." instance=ExtResource( 2 )]
 position = Vector2( 640, 320 )
 
-[node name="Floor" type="StaticBody2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="CanvasLayer"]
 collision_mask = 4
 
-[node name="ColorRect" type="ColorRect" parent="Floor"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Floor"]
 margin_left = -24.0
 margin_top = 712.0
 margin_right = 1304.0
@@ -59,7 +61,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="Floor"]
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Floor"]
 margin_left = 1320.0
 margin_top = -568.0
 margin_right = 2648.0
@@ -70,16 +72,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Floor"]
 position = Vector2( 640, 736 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CanvasLayer/Floor"]
 position = Vector2( 1296, 96 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="ColorRect3" type="ColorRect" parent="Floor"]
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Floor"]
 margin_left = 8.00006
 margin_top = -568.0
 margin_right = 1336.0
@@ -90,12 +92,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CanvasLayer/Floor"]
 position = Vector2( -15.9999, 96 )
 rotation = 1.5708
 shape = SubResource( 1 )
 
-[node name="ColorRect4" type="ColorRect" parent="Floor"]
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Floor"]
 margin_left = -40.0
 margin_top = -40.0
 margin_right = 1288.0
@@ -105,11 +107,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Floor"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CanvasLayer/Floor"]
 position = Vector2( 624, 8 )
 shape = SubResource( 2 )
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" type="Control" parent="CanvasLayer"]
 margin_left = 640.0
 margin_top = 320.0
 margin_right = 640.0
@@ -119,7 +121,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLabel" type="Label" parent="HUD"]
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/HUD"]
 margin_left = -632.0
 margin_top = -320.0
 margin_right = -404.0
@@ -130,7 +132,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreValue" type="Label" parent="HUD"]
+[node name="ScoreValue" type="Label" parent="CanvasLayer/HUD"]
 margin_left = -419.0
 margin_top = -320.0
 margin_right = -255.0
@@ -142,10 +144,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighScoreLabel" type="Label" parent="HUD"]
-margin_left = 320.0
+[node name="HighScoreLabel" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 288.0
 margin_top = -320.0
-margin_right = 472.0
+margin_right = 440.0
 margin_bottom = -263.0
 custom_fonts/font = SubResource( 3 )
 text = "Top:"
@@ -153,8 +155,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighScoreValue" type="Label" parent="HUD"]
-margin_left = 457.0
+[node name="HighScoreValue" type="Label" parent="CanvasLayer/HUD"]
+margin_left = 424.0
 margin_top = -320.0
 margin_right = 630.0
 margin_bottom = -263.0
@@ -165,7 +167,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GameOverLabel" type="Label" parent="HUD"]
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/HUD"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
@@ -182,7 +184,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NewHighScoreLabel" type="Label" parent="HUD"]
+[node name="NewHighScoreLabel" type="Label" parent="CanvasLayer/HUD"]
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5

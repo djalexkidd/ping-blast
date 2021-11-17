@@ -17,7 +17,7 @@ func _ready():
 	randomize()
 	modulate = colors[randi() % colors.size()]
 	$Strengh.text = String(strengh) #Actualise le compteur
-	connect("add_score", get_node("../HUD"), "_on_Ball_add_score")
+	connect("add_score", get_node("../CanvasLayer/HUD"), "_on_Ball_add_score")
 	if is_in_group("ball"):
 		connect("spawn_small", get_node(".."), "_on_Ball_spawn_small")
 

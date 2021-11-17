@@ -28,10 +28,10 @@ func _on_Player_lose():
 	can_shoot = false
 	$BGM.stop()
 	$GameOverSound.play()
-	$HUD/GameOverLabel.show()
-	if $HUD.score > Global.highscore:
+	$CanvasLayer/HUD/GameOverLabel.show()
+	if $CanvasLayer/HUD.score > Global.highscore:
 		$NewHighScoreSound.play()
-		$HUD/NewHighScoreLabel.show()
+		$CanvasLayer/HUD/NewHighScoreLabel.show()
 		save_highscore()
 
 func _on_Ball_spawn_small():
@@ -61,7 +61,7 @@ func _on_GameOverSound_finished():
 # Sauvegarde le meilleur score
 func save_highscore():
 	var data = {
-		"highscore" : $HUD.get_score()
+		"highscore" : $CanvasLayer/HUD.get_score()
 	}
 	
 	var save_file = File.new()
