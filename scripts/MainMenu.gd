@@ -25,7 +25,4 @@ func load_highscore():
 
 #Active/Désactive le plein écran
 func _on_FullScreenButton_pressed():
-	if OS.window_fullscreen:
-		OS.window_fullscreen = false
-	else:
-		OS.window_fullscreen = true
+	OS.window_fullscreen = !OS.window_fullscreen
