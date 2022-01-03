@@ -8,10 +8,10 @@ signal add_score
 signal spawn_small
 
 #Couleurs aléatoires
-const colors = [Color(1.0, 0.0, 0.0),
-		  Color(0.0, 1.0, 0.0),
-		  Color(0.0, 0.0, 1.0),
-		  Color(1.0, 1.0, 1.0)]
+const colors = [Color(1.0, 0.0, 0.0), #Rouge
+		  Color(0.0, 1.0, 0.0), #Vert
+		  Color(0.0, 0.8, 1.0), #Bleu
+		  Color(1.0, 1.0, 1.0)] #Blanc
 
 func _ready():
 	randomize() #Initialise le générateur de nombre aléatoire
