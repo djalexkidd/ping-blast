@@ -5,13 +5,13 @@ var bullet_ressource = preload("res://scenes/Bullet.tscn")
 var ball_ressource = preload("res://scenes/Ball.tscn")
 var ball_small_ressource = preload("res://scenes/Ball_small.tscn")
 var ball_number = 0 #Numéro de la balle
-const TRACKS = [ 'Track1', 'Track2' ] #Musiques aléatoires
+const TRACKS = [ 'Track1', 'Track2', 'Track3' ] #Musiques aléatoires
 
 #Charge une musique aléatoire
-#La musique doit être mise dans /assets/sounds/bgm/ au format WAV
+#La musique doit être mise dans /assets/sounds/bgm/ au format OGG
 func _ready():
 	var rand_nb = randi() % TRACKS.size()
-	var audiostream = load('res://assets/sounds/bgm/' + TRACKS[rand_nb] + '.wav')
+	var audiostream = load('res://assets/sounds/bgm/' + TRACKS[rand_nb] + '.ogg')
 	get_node("BGM").set_stream(audiostream)
 	$BGM.play()
 
