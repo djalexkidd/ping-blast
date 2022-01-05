@@ -15,11 +15,13 @@ const colors = [Color(1.0, 0.0, 0.0), #Rouge
 
 func _ready():
 	randomize() #Initialise le générateur de nombre aléatoire
+	if is_in_group("ball"):
+		connect("spawn_small", get_node(".."), "_on_Ball_spawn_small")
+	else:
+		strengh = strengh / 2 #Divise le compteur des petites boules par deux
 	modulate = colors[randi() % colors.size()] #Change la couleur aléatoirement
 	$Strengh.text = String(strengh) #Actualise le compteur
 	connect("add_score", get_node("../CanvasLayer/HUD"), "_on_Ball_add_score")
-	if is_in_group("ball"):
-		connect("spawn_small", get_node(".."), "_on_Ball_spawn_small")
 
 #Pour faire rebondir
 func _physics_process(delta):
