@@ -14,6 +14,14 @@ func _ready():
 	var audiostream = load('res://assets/sounds/bgm/' + TRACKS[rand_nb] + '.ogg')
 	get_node("BGM").set_stream(audiostream)
 	$BGM.play()
+	
+	if Global.bg_changed:
+		$Background.set_modulate(Color(1,1,1))
+		var image = Image.new()
+		var image_texture = ImageTexture.new()
+		image.load(Global.bg_path)
+		image_texture.create_from_image(image)
+		$Background.texture = image_texture
 
 func _physics_process(delta):
 	if Input.is_action_pressed("click") and can_shoot: #Quand le clic gauche est appuyé
