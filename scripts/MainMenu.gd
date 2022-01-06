@@ -1,8 +1,9 @@
 extends Control
 
-#Charge le meilleur score
 func _ready():
-	load_highscore()
+	load_highscore() #Charge le meilleur score
+	if OS.get_name() == "HTML5" or OS.get_name() == "Android": #Cache le bouton pour changer l'arrière-plan sur Android et Web
+		$CustomizeButton.queue_free()
 
 #Bouton pour jouer au jeu
 func _on_PlayButton_pressed():

@@ -163,6 +163,7 @@ margin_bottom = -16.0
 window_title = "Ouvrir un fichier"
 mode = 0
 access = 2
+filters = PoolStringArray( "*.png", "*.jpg" )
 current_dir = "/home/alexandre/Documents/Projets/ping-blast"
 current_path = "/home/alexandre/Documents/Projets/ping-blast/"
 __meta__ = {
