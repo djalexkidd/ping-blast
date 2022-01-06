@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Ball.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/sounds/sfx/New_Record-sharedassets0.assets.split0-65.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/sounds/sfx/Game_Lose-sharedassets0.assets.split0-36.wav" type="AudioStream" id=8]
 [ext_resource path="res://assets/icons/pause.png" type="Texture" id=9]
+[ext_resource path="res://assets/sounds/sfx/Fire-3b5c3fccd54504706b53e5578f3c8ef9-1.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 700, 370 )
@@ -269,6 +270,10 @@ volume_db = -4.0
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 volume_db = -6.0
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -14.0
 
 [connection signal="lose" from="Player" to="." method="_on_Player_lose"]
 [connection signal="switch_bg" from="CanvasLayer/HUD" to="." method="_on_HUD_switch_bg"]
