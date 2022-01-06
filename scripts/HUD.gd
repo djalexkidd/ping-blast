@@ -13,3 +13,12 @@ func _on_Ball_add_score():
 
 func get_score():
 	return score
+
+#Met en pause le jeu quand la touche [ÉCHAP] est pressée
+func _physics_process(delta):
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+		if get_tree().paused:
+			$Sprite.show()
+		else:
+			$Sprite.hide()
