@@ -6,6 +6,8 @@ var ball_ressource = preload("res://scenes/Ball.tscn")
 var ball_small_ressource = preload("res://scenes/Ball_small.tscn")
 var ball_number = 0 #Numéro de la balle
 const TRACKS = [ 'Track1', 'Track2', 'Track3' ] #Musiques aléatoires
+const BACKGROUNDS = [ 'bricks', 'grid', 'bluemoon' ] #Arrière-plans aléatoires
+var current_bg = 0
 
 #Charge une musique aléatoire
 #La musique doit être mise dans /assets/sounds/bgm/ au format OGG
@@ -16,7 +18,6 @@ func _ready():
 	$BGM.play()
 	
 	if Global.bg_changed:
-		$Background.set_modulate(Color(1,1,1))
 		var image = Image.new()
 		var image_texture = ImageTexture.new()
 		image.load(Global.bg_path)
@@ -92,3 +93,13 @@ func save_highscore():
 	save_file.open("user://highscores.json", File.WRITE)
 	save_file.store_line(to_json(data))
 	save_file.close()
+
+func _on_HUD_switch_bg():
+	current_bg += 1
+	var image = Image.new()
+	var image_texture = ImageTexture.new()
+	image.load('res://assets/backgrounds/' + BACKGROUNDS[current_bg] + '.png')
+	image_texture.create_from_image(image)
+	$Background.texture = image_texture
+	if current_bg == 2:
+		current_bg = -1

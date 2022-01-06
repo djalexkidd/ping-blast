@@ -66,7 +66,6 @@ tracks/0/keys = {
 script = ExtResource( 5 )
 
 [node name="Background" type="TextureRect" parent="."]
-modulate = Color( 0.290196, 0, 0.803922, 1 )
 margin_right = 1272.0
 margin_bottom = 712.0
 texture = ExtResource( 3 )
@@ -272,6 +271,7 @@ volume_db = -4.0
 volume_db = -6.0
 
 [connection signal="lose" from="Player" to="." method="_on_Player_lose"]
+[connection signal="switch_bg" from="CanvasLayer/HUD" to="." method="_on_HUD_switch_bg"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="SpawnNewTimer" to="." method="_on_SpawnNewTimer_timeout"]
 [connection signal="finished" from="GameOverSound" to="." method="_on_GameOverSound_finished"]
