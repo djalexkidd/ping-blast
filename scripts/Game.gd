@@ -106,6 +106,7 @@ func _on_HUD_switch_bg():
 	$Background.texture = image_texture
 	if current_bg == 2:
 		current_bg = -1
+	$SpawnNewTimer.wait_time /= 2
 
 func _on_Ball_explode():
 	$PopSound.play()
