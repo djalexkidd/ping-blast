@@ -17,6 +17,10 @@ func _on_Ball_add_score():
 	if score % 5000 == 0 and !Global.bg_changed:
 		change_background()
 
+func scorebonus():
+	score += 90
+	_on_Ball_add_score()
+
 func get_score():
 	return score
 

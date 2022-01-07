@@ -6,6 +6,7 @@ const GRAVITY = 5 #Gravité
 
 signal add_score
 signal spawn_small
+signal explode
 
 #Couleurs aléatoires
 const colors = [Color(1.0, 0.0, 0.0), #Rouge
@@ -22,6 +23,7 @@ func _ready():
 	modulate = colors[randi() % colors.size()] #Change la couleur aléatoirement
 	$Strengh.text = String(strengh) #Actualise le compteur
 	connect("add_score", get_node("../CanvasLayer/HUD"), "_on_Ball_add_score")
+	connect("explode", get_node(".."), "_on_Ball_explode")
 
 #Pour faire rebondir
 func _physics_process(delta):
@@ -37,6 +39,7 @@ func _physics_process(delta):
 	#Disparait quand le compteur est à 0
 	if strengh == 0:
 		emit_signal("spawn_small")
+		emit_signal("explode")
 		queue_free()
 
 #Décrémente le compteur
