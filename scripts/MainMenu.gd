@@ -2,8 +2,6 @@ extends Control
 
 func _ready():
 	load_highscore() #Charge le meilleur score
-	if OS.get_name() == "HTML5" or OS.get_name() == "Android": #Cache le bouton pour changer l'arrière-plan sur Android et Web
-		$CustomizeButton.queue_free()
 	if !Global.leaderboard_enabled:
 		$LeaderboardButton.queue_free()
 
