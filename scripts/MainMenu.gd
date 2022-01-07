@@ -2,6 +2,8 @@ extends Control
 
 func _ready():
 	load_highscore() #Charge le meilleur score
+	if Global.player_name == "Anonymous":
+		load_playername()
 	if !Global.leaderboard_enabled:
 		$LeaderboardButton.queue_free()
 
@@ -25,6 +27,17 @@ func load_highscore():
 	var game_data = JSON.parse(json_str).result
 	Global.highscore = game_data.highscore #Met la première ligne du fichier dans une variable "highscore"
 	$TopValue.text = String(Global.highscore) #Change le texte
+	save_file.close() #Ferme le fichier
+
+func load_playername():
+	var save_file = File.new()
+	if not save_file.file_exists("user://playername.json"):
+		return #Ne fait rien si le fichier n'existe pas
+
+	save_file.open("user://playername.json", File.READ) #Ouvre le fichier
+	var json_str = save_file.get_as_text()
+	var game_data = JSON.parse(json_str).result
+	Global.player_name = game_data.player_name #Met la première ligne du fichier dans une variable "player_name"
 	save_file.close() #Ferme le fichier
 
 func _on_SettingsButton_pressed():

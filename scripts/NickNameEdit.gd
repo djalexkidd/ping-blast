@@ -6,13 +6,16 @@ var set_position = true
 var global_position
 
 func _ready():
-	if Global.player_name != "Anonymous":
+	if Global.player_name == "Anonymous":
+		text = ""
+	else:
 		text = Global.player_name
 
 func name_apply(new_text):
 	if text == "":
 		Global.player_name = "Anonymous"
 	Global.player_name = text
+	save_playername()
 
 func reposition():
 	var target_y
@@ -28,3 +31,14 @@ func _process(delta):
 		global_position = get_global_position()
 		set_position = false
 	reposition()
+
+# Sauvegarde le nom du joueur
+func save_playername():
+	var data = {
+		"player_name" : text
+	}
+	
+	var save_file = File.new()
+	save_file.open("user://playername.json", File.WRITE)
+	save_file.store_line(to_json(data))
+	save_file.close()
