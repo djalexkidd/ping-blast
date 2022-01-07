@@ -57,16 +57,17 @@ func _on_Player_lose():
 #HOLY SHIT! C'est bordelique!
 #Spawn deux petites balles
 func _on_Ball_spawn_small():
-	#Une à gauche
-	toast()
-	get_node("ball_small" + str(ball_number)).set_position(Vector2(get_node("ball" + str(ball_number - 1)).position))
-	get_node("ball_small" + str(ball_number)).position.x -= 50
-	#Une à droite
-	toast()
-	get_node("ball_small" + str(ball_number)).set_position(Vector2(get_node("ball" + str(ball_number - 2)).position))
-	get_node("ball_small" + str(ball_number)).position.x += 50
+	if ball_number - 1 != null:
+		#Une à gauche
+		toast()
+		get_node("ball_small" + str(ball_number)).set_position(Vector2(get_node("ball" + str(ball_number - 1)).position))
+		get_node("ball_small" + str(ball_number)).position.x -= 50
+		#Une à droite
+		toast()
+		get_node("ball_small" + str(ball_number)).set_position(Vector2(get_node("ball" + str(ball_number - 2)).position))
+		get_node("ball_small" + str(ball_number)).position.x += 50
 	
-	#En gros ça doit faire téléporter les nouvelles boules à la précédente, pour faire un effet de division mais ça marche mal
+		#En gros ça doit faire téléporter les nouvelles boules à la précédente, pour faire un effet de division mais ça marche mal
 
 #Incrémente l'identifiant de la boule
 func toast():
