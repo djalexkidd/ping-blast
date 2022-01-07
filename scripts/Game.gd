@@ -20,7 +20,8 @@ func _ready():
 	if Global.bg_changed:
 		var image = Image.new()
 		var image_texture = ImageTexture.new()
-		image.load(Global.bg_path)
+		var image_path = load(Global.bg_path)
+		image = image_path.get_data()
 		image_texture.create_from_image(image)
 		$Background.texture = image_texture
 
@@ -101,7 +102,8 @@ func _on_HUD_switch_bg():
 	current_bg += 1
 	var image = Image.new()
 	var image_texture = ImageTexture.new()
-	image.load('res://assets/backgrounds/' + BACKGROUNDS[current_bg] + '.png')
+	var image_path = load('res://assets/backgrounds/' + BACKGROUNDS[current_bg] + '.png')
+	image = image_path.get_data()
 	image_texture.create_from_image(image)
 	$Background.texture = image_texture
 	if current_bg == 2:
