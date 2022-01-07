@@ -3,10 +3,13 @@ extends KinematicBody2D
 var velocity = Vector2(100,0)
 var strengh = 50 #Compteur
 const GRAVITY = 5 #Gravité
+var percent = randf()
+var is_bonus
 
 signal add_score
 signal spawn_small
 signal explode
+signal bonus_get
 
 #Couleurs aléatoires
 const colors = [Color(1.0, 0.0, 0.0), #Rouge
@@ -24,6 +27,13 @@ func _ready():
 	$Strengh.text = String(strengh) #Actualise le compteur
 	connect("add_score", get_node("../CanvasLayer/HUD"), "_on_Ball_add_score")
 	connect("explode", get_node(".."), "_on_Ball_explode")
+	
+	if (percent > 0.8) and not is_in_group("ball_small"):
+		modulate = Color(1,1,0)
+		$Strengh.text = "?"
+		strengh = 10
+		is_bonus = true
+		connect("bonus_get", get_node("../Player"), "bonus")
 
 #Pour faire rebondir
 func _physics_process(delta):
@@ -38,13 +48,20 @@ func _physics_process(delta):
 	
 	#Disparait quand le compteur est à 0
 	if strengh == 0:
-		emit_signal("spawn_small")
+		if is_bonus:
+			emit_signal("bonus_get")
+		else:
+			emit_signal("spawn_small")
 		emit_signal("explode")
 		queue_free()
 
 #Décrémente le compteur
 func _on_Area2D_area_entered(area):
-	if not area.is_in_group("Player"):
+	if not area.is_in_group("Player") and not is_bonus:
 		strengh -= 1
 		emit_signal("add_score")
 		$Strengh.text = String(strengh) #Actualise le compteur
+	
+	if not area.is_in_group("Player") and is_bonus:
+		strengh -= 1
+		emit_signal("add_score")

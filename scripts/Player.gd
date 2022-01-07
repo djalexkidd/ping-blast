@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var invincible
+
 signal lose
 
 func _physics_process(delta):
@@ -7,5 +9,16 @@ func _physics_process(delta):
 
 #Quand le carré rouge touche une balle, la partie est perdue
 func _on_Area2D_area_entered(area):
-	emit_signal("lose")
-	queue_free()
+	if !invincible:
+		emit_signal("lose")
+		queue_free()
+
+func bonus():
+	invincible = true
+	modulate = Color(1,1,1,0.25)
+	$Invinciblility.start()
+	$InvinciblilityGet.play()
+
+func _on_Invinciblility_timeout():
+	invincible = false
+	modulate = Color(1,1,1,1)
