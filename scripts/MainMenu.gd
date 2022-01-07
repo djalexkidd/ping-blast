@@ -4,6 +4,8 @@ func _ready():
 	load_highscore() #Charge le meilleur score
 	if OS.get_name() == "HTML5" or OS.get_name() == "Android": #Cache le bouton pour changer l'arrière-plan sur Android et Web
 		$CustomizeButton.queue_free()
+	if !Global.leaderboard_enabled:
+		$LeaderboardButton.queue_free()
 
 #Bouton pour jouer au jeu
 func _on_PlayButton_pressed():
@@ -27,14 +29,8 @@ func load_highscore():
 	$TopValue.text = String(Global.highscore) #Change le texte
 	save_file.close() #Ferme le fichier
 
-#Active/Désactive le plein écran
-func _on_FullScreenButton_pressed():
-	OS.window_fullscreen = !OS.window_fullscreen
+func _on_SettingsButton_pressed():
+	get_tree().change_scene("res://scenes/Settings.tscn")
 
-#Bouton pour changer l'arrière-plan du jeu
-func _on_CustomizeButton_pressed():
-	$FileDialog.popup()
-
-func _on_FileDialog_file_selected(path):
-	Global.bg_changed = true
-	Global.bg_path = path
+func _on_LeaderboardButton_pressed():
+	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")

@@ -50,6 +50,8 @@ func _on_Player_lose():
 		$NewHighScoreSound.play() #Joue le son du High Score
 		$CanvasLayer/HUD/NewHighScoreLabel.show() #Le texte "Nouveau Record !" s'affiche
 		save_highscore() #Sauvegarde le record
+		if Global.leaderboard_enabled:
+			SilentWolf.Scores.persist_score(Global.player_name, $CanvasLayer/HUD.get_score()) #Inscrit votre record dans les classements
 
 #HOLY SHIT! C'est bordelique!
 #Spawn deux petites balles
