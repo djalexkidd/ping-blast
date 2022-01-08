@@ -3,6 +3,8 @@ extends Control
 func _ready():
 	if OS.get_name() == "HTML5" or OS.get_name() == "Android": #Cache le bouton pour changer l'arrière-plan sur Android et Web
 		$CustomizeButton.disabled = true
+	if OS.get_name() == "Android":
+		$FullScreenButton.disabled = true
 
 #Active/Désactive le plein écran
 func _on_FullScreenButton_pressed():

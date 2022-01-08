@@ -20,8 +20,7 @@ func _ready():
 	if Global.bg_changed:
 		var image = Image.new()
 		var image_texture = ImageTexture.new()
-		var image_path = load(Global.bg_path)
-		image = image_path.get_data()
+		image.load(Global.bg_path)
 		image_texture.create_from_image(image)
 		$Background.texture = image_texture
 
