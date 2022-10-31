@@ -2,12 +2,14 @@ extends Node2D
 
 var can_shoot = true #Variable pour limiter le "fire rate"
 var bullet_ressource = preload("res://scenes/Bullet.tscn")
+var multi_bullet_ressource = preload("res://scenes/Bullet_multi.tscn")
 var ball_ressource = preload("res://scenes/Ball.tscn")
 var ball_small_ressource = preload("res://scenes/Ball_small.tscn")
 var ball_number = 0 #Numéro de la balle
 const TRACKS = [ 'Track1', 'Track2', 'Track3' ] #Musiques aléatoires
 const BACKGROUNDS = [ 'bricks', 'grid', 'bluemoon' ] #Arrière-plans aléatoires
 var current_bg = 0
+var multi_bullet_enabled # Bonus
 
 #Charge une musique aléatoire
 #La musique doit être mise dans /assets/sounds/bgm/ au format OGG
@@ -28,6 +30,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("click") and can_shoot: #Quand le clic gauche est appuyé
 		var bullet = bullet_ressource.instance() #Instance en tant que noeud
 		add_child(bullet) #L'ajoute dans la scène
+		if multi_bullet_enabled:
+			var multi_bullet = multi_bullet_ressource.instance() #Instance en tant que noeud
+			add_child(multi_bullet) #L'ajoute dans la scène
 		$ShootSound.play()
 		can_shoot = false
 		$Timer.start()
@@ -113,3 +118,9 @@ func _on_HUD_switch_bg():
 func _on_Ball_explode():
 	$PopSound.play()
 	$CanvasLayer/HUD.scorebonus()
+
+func _on_Player_multibullet():
+	multi_bullet_enabled = true
+
+func _on_Player_multibullet_stop():
+	multi_bullet_enabled = false

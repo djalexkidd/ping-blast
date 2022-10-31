@@ -49,7 +49,7 @@ func _physics_process(delta):
 		$Bounce.play()
 	
 	#Disparait quand le compteur est à 0
-	if strengh == 0:
+	if strengh <= 0:
 		if is_bonus:
 			emit_signal("bonus_get")
 		else:

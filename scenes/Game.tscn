@@ -280,6 +280,8 @@ volume_db = -14.0
 stream = ExtResource( 11 )
 
 [connection signal="lose" from="Player" to="." method="_on_Player_lose"]
+[connection signal="multibullet" from="Player" to="." method="_on_Player_multibullet"]
+[connection signal="multibullet_stop" from="Player" to="." method="_on_Player_multibullet_stop"]
 [connection signal="switch_bg" from="CanvasLayer/HUD" to="." method="_on_HUD_switch_bg"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="SpawnNewTimer" to="." method="_on_SpawnNewTimer_timeout"]
