@@ -11,10 +11,12 @@ signal spawn_small
 signal explode
 signal bonus_get
 
-#Couleurs aléatoires
+#Couleurs aléatoires (RGB)
 const colors = [Color(1.0, 0.0, 0.0), #Rouge
 		  Color(0.0, 1.0, 0.0), #Vert
 		  Color(0.0, 0.8, 1.0), #Bleu
+		  Color(1.0, 0.6, 0.0), #Orange
+		  Color(0.7, 0.0, 1.0), #Violet
 		  Color(1.0, 1.0, 1.0)] #Blanc
 
 func _ready():
