@@ -6,9 +6,6 @@ signal lose
 signal multibullet
 signal multibullet_stop
 
-func _ready():
-	randomize() #Initialise le générateur de nombre aléatoire
-
 #Suit le mouvement de la souris sur l'axe X
 func _on_Move_timeout():
 	var tween = get_node("Tween")
@@ -22,6 +19,7 @@ func _on_Area2D_area_entered(area):
 		queue_free()
 
 func bonus():
+	randomize() #Initialise le générateur de nombre aléatoire
 	var percent = randf()
 	if (percent > 0.5):
 		invincible = true
@@ -32,6 +30,7 @@ func bonus():
 		emit_signal("multibullet")
 		$MultiBullet.start()
 		$InvinciblilityGet.play()
+	get_node("../CanvasLayer/HUD").start_bonus_timer_hud()
 
 func _on_Invinciblility_timeout():
 	invincible = false

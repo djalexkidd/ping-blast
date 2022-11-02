@@ -32,6 +32,10 @@ func _physics_process(delta):
 			$Sprite.show()
 		else:
 			$Sprite.hide()
+	$ProgressBar.value = $ProgressBar/BonusTimer.time_left * 10
 
 func change_background():
 	emit_signal("switch_bg")
+
+func start_bonus_timer_hud():
+	$ProgressBar/BonusTimer.start()
