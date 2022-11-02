@@ -9,8 +9,11 @@ signal multibullet_stop
 func _ready():
 	randomize() #Initialise le générateur de nombre aléatoire
 
-func _physics_process(delta):
-	position.x = get_viewport().get_mouse_position().x #Suit le mouvement de la souris sur l'axe X
+#Suit le mouvement de la souris sur l'axe X
+func _on_Move_timeout():
+	var tween = get_node("Tween")
+	tween.interpolate_property(self, "position",Vector2(position.x,position.y), Vector2(get_viewport().get_mouse_position().x,position.y),0.05 ,Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+	tween.start()
 
 #Quand le carré rouge touche une balle, la partie est perdue
 func _on_Area2D_area_entered(area):
