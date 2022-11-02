@@ -38,4 +38,8 @@ func change_background():
 	emit_signal("switch_bg")
 
 func start_bonus_timer_hud():
+	$ProgressBar.show()
 	$ProgressBar/BonusTimer.start()
+
+func _on_BonusTimer_timeout():
+	$ProgressBar.hide()

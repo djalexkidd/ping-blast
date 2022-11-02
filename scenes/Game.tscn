@@ -259,6 +259,7 @@ anims/paused = SubResource( 8 )
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD"]
 pause_mode = 1
+visible = false
 margin_left = -632.0
 margin_top = -256.0
 margin_right = 632.0
@@ -299,6 +300,7 @@ stream = ExtResource( 11 )
 [connection signal="multibullet" from="Player" to="." method="_on_Player_multibullet"]
 [connection signal="multibullet_stop" from="Player" to="." method="_on_Player_multibullet_stop"]
 [connection signal="switch_bg" from="CanvasLayer/HUD" to="." method="_on_HUD_switch_bg"]
+[connection signal="timeout" from="CanvasLayer/HUD/ProgressBar/BonusTimer" to="CanvasLayer/HUD" method="_on_BonusTimer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="SpawnNewTimer" to="." method="_on_SpawnNewTimer_timeout"]
 [connection signal="finished" from="GameOverSound" to="." method="_on_GameOverSound_finished"]
