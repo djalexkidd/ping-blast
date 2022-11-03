@@ -1,6 +1,7 @@
 extends Control
 
 var score = 0
+var score_to_next_level = 5000
 
 signal switch_bg
 
@@ -14,8 +15,9 @@ func _on_Ball_add_score():
 	$ScoreValue.text = String(score) #Actualise le compteur de pièces
 	
 	#Change l'arrière-plan quand le score est à chaque multiple de 5000
-	if score % 5000 == 0 and !Global.bg_changed:
+	if score >= score_to_next_level and !Global.bg_changed:
 		change_background()
+		score_to_next_level += 5000
 
 func scorebonus():
 	score += 90
