@@ -45,3 +45,16 @@ func start_bonus_timer_hud():
 
 func _on_BonusTimer_timeout():
 	$ProgressBar.hide()
+
+func _notification(what: int) -> void:
+	match what:
+		MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+			# Handle Android back button
+			handle_back_button()
+
+func handle_back_button():
+	get_tree().paused = !get_tree().paused
+	if get_tree().paused:
+		$Sprite.show()
+	else:
+		$Sprite.hide()
