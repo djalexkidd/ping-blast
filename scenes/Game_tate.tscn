@@ -207,9 +207,9 @@ anims/paused = SubResource( 8 )
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HUD"]
 pause_mode = 1
 visible = false
-margin_left = -592.0
+margin_left = -640.0
 margin_top = -256.0
-margin_right = 32.0
+margin_right = 80.0
 margin_bottom = -224.0
 custom_styles/fg = SubResource( 9 )
 custom_styles/bg = SubResource( 10 )
