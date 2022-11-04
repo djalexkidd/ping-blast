@@ -25,6 +25,9 @@ func _ready():
 		image.load(Global.bg_path)
 		image_texture.create_from_image(image)
 		$Background.texture = image_texture
+	
+	if Global.tate_mode:
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(720, 1280))
 
 func _physics_process(delta):
 	if Input.is_action_pressed("click") and can_shoot: #Quand le clic gauche est appuyé

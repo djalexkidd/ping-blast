@@ -107,11 +107,11 @@ __meta__ = {
 [node name="Version" type="Label" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -114.0
+margin_left = -131.0
 margin_bottom = 29.0
 custom_fonts/font = SubResource( 2 )
-text = "v1.2.1"
-align = 1
+text = "v1.3"
+align = 2
 
 [connection signal="text_changed" from="NickNameEdit" to="NickNameEdit" method="name_apply"]
 [connection signal="pressed" from="FullScreenButton" to="." method="_on_FullScreenButton_pressed"]

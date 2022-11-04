@@ -6,10 +6,18 @@ func _ready():
 		load_playername()
 	if !Global.leaderboard_enabled:
 		$LeaderboardButton.queue_free()
+	if Global.tate_mode:
+		$TateButton.text = "TITLE_MODE_TATE"
+		OS.set_screen_orientation(0)
+		get_tree().set_screen_stretch(SceneTree.STRETCH_MODE_2D, SceneTree.STRETCH_ASPECT_KEEP, Vector2(1280, 720))
 
 #Bouton pour jouer au jeu
 func _on_PlayButton_pressed():
-	get_tree().change_scene("res://scenes/Game.tscn")
+	if Global.tate_mode:
+		get_tree().change_scene("res://scenes/Game_tate.tscn")
+		OS.set_screen_orientation(1)
+	else:
+		get_tree().change_scene("res://scenes/Game.tscn")
 
 #Bouton pour quitter le jeu
 func _on_QuitButton_pressed():
@@ -45,3 +53,11 @@ func _on_SettingsButton_pressed():
 
 func _on_LeaderboardButton_pressed():
 	get_tree().change_scene("res://addons/silent_wolf/Scores/Leaderboard.tscn")
+
+func _on_TateButton_toggled(button_pressed):
+	if Global.tate_mode:
+		Global.tate_mode = false
+		$TateButton.text = "TITLE_MODE_NORMAL"
+	else:
+		Global.tate_mode = true
+		$TateButton.text = "TITLE_MODE_TATE"
