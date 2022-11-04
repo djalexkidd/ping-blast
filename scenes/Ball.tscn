@@ -51,5 +51,3 @@ __meta__ = {
 
 [node name="Bounce" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

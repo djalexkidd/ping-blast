@@ -18,4 +18,5 @@ func _on_Timer_timeout():
 
 #Libère la balle de la RAM quand elle touche une boule :lenny:
 func _on_Area2D_body_entered(body):
+	body.hit()
 	queue_free()

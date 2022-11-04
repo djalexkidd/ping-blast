@@ -58,12 +58,9 @@ func _physics_process(delta):
 		queue_free()
 
 #Décrémente le compteur
-func _on_Area2D_area_entered(area):
-	if not area.is_in_group("Player") and not is_bonus:
-		strengh -= 1
-		emit_signal("add_score")
-		$Strengh.text = String(strengh) #Actualise le compteur
+func hit():
+	strengh -= 1
+	emit_signal("add_score")
 	
-	if not area.is_in_group("Player") and is_bonus:
-		strengh -= 1
-		emit_signal("add_score")
+	if not is_bonus:
+		$Strengh.text = String(strengh) #Actualise le compteur
